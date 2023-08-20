@@ -80,6 +80,7 @@ const onMovieClick = async request => {
     }
   })
 
+  console.log(response.data)
 document.querySelector("#summary").innerHTML = movieTemplate(response.data)
 }
 
