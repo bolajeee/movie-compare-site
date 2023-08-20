@@ -80,7 +80,6 @@ const onMovieClick = async request => {
     }
   })
 
-  console.log(response.data)
 document.querySelector("#summary").innerHTML = movieTemplate(response.data)
 }
 
@@ -103,7 +102,7 @@ const movieTemplate = (movieDetail) => {
   <p class="subtitle">Awards</p>
   </article>
   <article class="notification is-primary">
-  <p class="title">${movieDetail.Boxoffice}</p>
+  <p class="title">${movieDetail.BoxOffice}</p>
   <p class="subtitle">Boxoffice</p>
   </article>
   <article class="notification is-primary">
