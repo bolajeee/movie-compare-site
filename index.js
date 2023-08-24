@@ -1,86 +1,63 @@
- const fetchData = async request => {
-  const reply = await axios.get('http://www.omdbapi.com/', {
-    params: {
-      apikey: 'a264e056',
-      s: request
+  const autocompleteConfig = {
+    renderOptions(movie){
+
+      const imgSrc = movie.Poster === 'N/A' ? '' : movie.Poster; 
+  
+      return `
+      <img src="${imgSrc}" />
+      ${movie.Title} (${movie.Year})
+    `;
+      },
+  
+      inputValue(movie){
+        return movie.Title
+      },
+  
+      async  fetchData(request) {
+        const reply = await axios.get('http://www.omdbapi.com/', {
+          params: {
+            apikey: 'a264e056',
+            s: request
+          }
+        })
+      
+        if (reply.data.Error) {
+          return []
+        }
+      
+        return reply.data.Search
+      }
+  
+  }
+  
+  createSearchBar({
+    ...autocompleteConfig,
+    root: document.querySelector('#left-autocomplete'),
+    onOptionSelect (movie){
+      document.querySelector('.tutorial').classList.add('is-hidden')
+      onMovieClick(movie, document.querySelector('#left-summary'))
     }
   })
 
-  if (reply.data.Error) {
-    return []
-  }
-
-  return reply.data.Search
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const searchBar = document.querySelector('.searchBar')
-
-  searchBar.innerHTML = `
-      <label><b>Search for your movie below</b></label>
-
-      <input type="text" />
-
-      <div class="dropdown">
-      <div class="dropdown-menu"> 
-        <div class="dropdown-content searchResults"></div>
-      </div>
-    </div>
-  `
-
-
-  const input = document.querySelector('input')
-  const searchResult = document.querySelector('.searchResults')
-  const dropdown = document.querySelector('.dropdown')
-
-  const onInput = async event => {
-    const movies = await fetchData(event.target.value)
-    console.log(movies)
-
-    if (!movies.length) {
-      dropdown.classList.remove('is-active')
-      return
+  createSearchBar({
+    ...autocompleteConfig,
+    root: document.querySelector('#right-autocomplete'),
+    onOptionSelect (movie){
+      document.querySelector('.tutorial').classList.add('is-hidden')
+      onMovieClick(movie, document.querySelector('#right-summary'))
     }
-    searchResult.innerHTML = '' // Clear previous content
-
-    dropdown.classList.add('is-active')
-    for (let movie of movies) {
-      const options = document.createElement('a')
-
-      options.innerHTML = `
-              <img src="${movie.Poster}">
-              ${movie.Title}
-            `
-
-      options.addEventListener('click', () => {
-        dropdown.classList.remove('is-active')
-        input.value = movie.Title
-        onMovieClick(movie)
-      })
-
-      searchResult.append(options)
-    }
-  }
-
-  input.addEventListener('input', debounce(onInput, 500))
-
-  document.addEventListener('click', event => {
-    if (!searchBar.contains(event.target)) {
-      dropdown.classList.remove('is-active')
-    }
-    input.in
   })
-})
 
-const onMovieClick = async request => {
+
+const onMovieClick = async (request, summaryRequest) => {
   const response = await axios.get('http://www.omdbapi.com/', {
     params: {
       apikey: 'a264e056',
-      i: request.imdbID
+      i: request.imdbID, 
     }
   })
 
-document.querySelector("#summary").innerHTML = movieTemplate(response.data)
+  summaryRequest.innerHTML = movieTemplate(response.data)
 }
 
 const movieTemplate = (movieDetail) => {
