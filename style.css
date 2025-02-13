@@ -1,3 +1,81 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif; /* Improved font for better readability */
+  background-color: #f4f4f4; /* Light background for better contrast */
+  color: #333; /* Darker text for better readability */
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(to right, #00d1b2, #00c4a7); /* Gradient background */
+  color: white; /* White text for contrast */
+  padding: 2rem 0; /* More padding for a spacious feel */
+}
+
+/* Title Styles */
+.title {
+  font-size: 2.5rem; /* Larger title */
+  font-weight: bold; /* Bold title */
+}
+
+/* Container Styles */
+.container {
+  max-width: 1200px; /* Max width for larger screens */
+  margin: auto; /* Center the container */
+  padding: 1rem; /* Padding for spacing */
+}
+
+/* Columns */
+.columns {
+  margin-top: 30px; /* Space between sections */
+}
+
+/* Notification Styles */
+.notification {
+  border-radius: 8px; /* Rounded corners for notifications */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Dropdown Styles */
+.dropdown {
+  position: relative; /* Positioning for dropdown */
+}
+
+.dropdown-menu {
+  position: absolute; /* Absolute positioning for dropdown */
+  z-index: 10; /* Ensure dropdown is above other elements */
+  background: white; /* White background for dropdown */
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Shadow for dropdown */
+}
+
+/* Input Styles */
+input[type="text"] {
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px; /* Padding for input */
+  width: 100%; /* Full width */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+/* Media Styles */
+.media {
+  margin-bottom: 20px; /* Space between media items */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem; /* Smaller title on mobile */
+  }
+
+  .tutorial {
+    width: 90%; /* Full width on mobile */
+  }
+}
+
 .tutorial {
   width: 600px;
   text-align: center;

@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Fight</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+      integrity="sha384-..."
+      crossorigin="anonymous"
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"
+      integrity="sha384-..."
+      crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -27,8 +34,8 @@
       </div>
     </section>
     <div class="container">
-      <div class="columns" style="margin-top: 30px; justify-content: center;">
-        <div class="column" style="flex-direction: column;">
+      <div class="columns" style="margin-top: 30px; justify-content: center">
+        <div class="column" style="flex-direction: column">
           <div id="left-autocomplete"></div>
           <div id="left-summary"></div>
         </div>
@@ -39,13 +46,16 @@
         </div>
       </div>
 
-      <div class="column is-half notification is-primary tutorial" style="margin-top: 150px !important;">
+      <div
+        class="column is-half notification is-primary tutorial"
+        style="margin-top: 150px !important"
+      >
         <h1 class="title">Search For a Movie on Both Sides</h1>
         <p class="subtitle">We will tell you which is best!</p>
       </div>
     </div>
-    <script src="utils.js"></script>
-    <script src="autocomplete.js"></script>
-    <script src="index.js"></script>
+    <script src="utils.js" defer></script>
+    <script src="autocomplete.js" defer></script>
+    <script src="index.js" defer></script>
   </body>
 </html>
